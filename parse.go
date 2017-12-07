@@ -44,8 +44,8 @@ func ParseLedger(ledgerReader io.Reader) (generalLedger []*Transaction, err erro
 				trans = nil
 			}
 		} else if trans == nil {
-			lineSplit := strings.SplitN(line, " ", 2)
-			if len(lineSplit) != 2 {
+			lineSplit := strings.SplitN(line, " ", 3)
+			if len(lineSplit) <= 2 {
 				return generalLedger, fmt.Errorf("%d: Unable to parse payee line: %s", lineCount, line)
 			}
 			dateString := lineSplit[0]
@@ -54,6 +54,8 @@ func ParseLedger(ledgerReader io.Reader) (generalLedger []*Transaction, err erro
 				return generalLedger, fmt.Errorf("%d: Unable to parse date: %s", lineCount, dateString)
 			}
 			payeeString := lineSplit[1]
+			currency := lineSplit[2]
+			//TODO: Append Transaction struct to account (no pun intended) for currency
 			trans = &Transaction{Payee: payeeString, Date: transDate}
 		} else {
 			var accChange Account
