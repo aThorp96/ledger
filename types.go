@@ -29,6 +29,7 @@ func (s sortAccountsByName) Less(i, j int) bool {
 type Transaction struct {
 	Payee          string
 	Date           time.Time
+	Currency       string
 	AccountChanges []Account
 }
 

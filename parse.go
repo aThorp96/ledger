@@ -55,8 +55,7 @@ func ParseLedger(ledgerReader io.Reader) (generalLedger []*Transaction, err erro
 			}
 			payeeString := lineSplit[1]
 			currency := lineSplit[2]
-			//TODO: Append Transaction struct to account (no pun intended) for currency
-			trans = &Transaction{Payee: payeeString, Date: transDate}
+			trans = &Transaction{Payee: payeeString, Date: transDate, Currency: currency}
 		} else {
 			var accChange Account
 			lineSplit := accountToAmountSpace.Split(trimmedLine, -1)
