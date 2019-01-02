@@ -117,6 +117,7 @@ func ParseLedgerAsync(ledgerReader io.Reader) (c chan *Transaction, e chan error
 				trans.AccountChanges = append(trans.AccountChanges, accChange)
 			}
 		}
+
 		// If the file does not end on empty line, we must attempt to balance last
 		// transaction of the file.
 		if trans != nil {
