@@ -101,5 +101,7 @@ The screenshots below are taken on an Android device. To give a rough idea of wh
 ## Incompatibilities
 
 - C++ Ledger permits having amounts prefixed with $; Ledger in Go does not
+- 
+- C++ Ledger permits having amounts postfixed with any currency acronym; Ledger in Go does not
 
 - C++ Ledger permits an empty *Payee Description*; Ledger in Go does not
